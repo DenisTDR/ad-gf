@@ -4,7 +4,8 @@ const {Applicant} = require("../models/applicant.schema");
 const {mongodbUrl} = require("../constants");
 
 const options = {useNewUrlParser: true};
-const connect = async (callback) => {
+
+async function connect() {
     await mongoose.connect(mongodbUrl, options, (err => {
         if (err) {
             console.error("can't connect to mongo");
@@ -13,15 +14,16 @@ const connect = async (callback) => {
             return;
         }
         console.log("connected to MongoDB");
-
-        if (typeof callback === 'function') {
-            callback();
-        }
     }));
 };
 
+async function disconnect() {
+    await mongoose.disconnect();
+}
+
 module.exports = {
-    connect: connect,
-    Applicant: Applicant,
-    ParticipantInfo: ParticipantInfo
+    connect,
+    disconnect,
+    Applicant,
+    ParticipantInfo
 };

@@ -1,7 +1,14 @@
 const mongodb = require("./connectors/mongodb");
+const mariadbConnect = require("./connectors/mariadbConnect");
 
-mongodb.connect(async () => {
-    // console.log('created schema?');
-    // const testApplicant = new Applicant({name: 'john smith'});
-    // await testApplicant.save();
+
+async function migrateData() {
+    const mariaDbConnection = await mariadbConnect.connect();
+    await mongodb.connect();
+
+
+}
+
+migrateData().then(() => {
+   console.log("Done ...");
 });

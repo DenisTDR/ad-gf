@@ -1,8 +1,8 @@
-const mariadb = require('mariadb');
-const {mariaDbConfig} = require("./constants");
+const mariadbConnect = require('mariadb/types');
+const {mariaDbConfig} = require("../constants");
 
 
-const pool = mariadb.createPool(mariaDbConfig);
+const pool = mariadbConnect.createPool(mariaDbConfig);
 
 async function connect() {
     let conn;
