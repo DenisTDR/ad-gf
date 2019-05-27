@@ -5,7 +5,7 @@ const app = express();
 // const {Applicant} = require("./models/applicant.schema");
 const {appPort} = require("./constants");
 
-mongodb.connect(async () => {
+// mongodb.connect(async () => {
     // console.log('created schema?');
     // const testApplicant = new Applicant({name: 'john smith'});
     // await testApplicant.save();
