@@ -1,4 +1,4 @@
-const {connect} = require("./connectors/mariadbConnect");
+const {connect} = require("../connectors/mariadbConnect");
 
 async function executeQueries() {
     const queries = [
