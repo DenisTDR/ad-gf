@@ -6,7 +6,7 @@ const applicantSchema = new mongoose.Schema({
     phoneNumber: String,
     firstName: String,
     lastName: String,
-    gender:
+    gender: String,
 });
 
 const Applicant = mongoose.model('Applicant', applicantSchema);
