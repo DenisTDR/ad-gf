@@ -17,6 +17,10 @@ async function executeQueries() {
         {
             name: 'get all order by birthdate',
             sql: 'SELECT * FROM Applicant INNER JOIN ParticipantInfo ON Applicant.InfoId=ParticipantInfo.Id ORDER BY BirthDate ASC',
+        },
+        {
+            name: 'participants pagination 50',
+            sql: 'SELECT * FROM Applicant INNER JOIN ParticipantInfo ON Applicant.InfoId=ParticipantInfo.Id LIMIT 50, 100',
         }
     ];
 
@@ -27,7 +31,7 @@ async function executeQueries() {
         const start = new Date();
         const rows = await conn.query(query);
         console.log('query `%s` took %dms', query.name, new Date() - start);
-        console.log(rows[0]);
+        // console.log(rows[0]);
 
     }
 
