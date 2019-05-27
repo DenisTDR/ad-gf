@@ -1,4 +1,4 @@
-const mariadbConnect = require('mariadb/types');
+const mariadbConnect = require('mariadb');
 const {mariaDbConfig} = require("../constants");
 
 
