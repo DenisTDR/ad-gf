@@ -1,4 +1,5 @@
 const express = require('express');
+const sql = require('./sql');
 const app = express();
 
 const mongodbConnect = require('./mongodbConnect');
@@ -15,3 +16,4 @@ app.get('/', (req, res) => res.send('Hello World!'));
 app.listen(appPort, () => console.log(`App listening on port ${appPort}!`));
 
 
+sql.select();
