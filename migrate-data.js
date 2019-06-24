@@ -1,6 +1,5 @@
 const mongodb = require("./connectors/mongodb");
 const mariadbConnect = require("./connectors/mariadbConnect");
-const {Applicant} = require("./connectors/mongodb");
 
 
 async function migrateData() {
@@ -24,7 +23,7 @@ async function migrateData() {
             delete applicantObj.InfoId;
         }
         delete applicantObj.Deleted;
-        const applicantMongoModel = new Applicant(applicantObj);
+        const applicantMongoModel = new mongodb.Applicant(applicantObj);
 
         await applicantMongoModel.save();
     }

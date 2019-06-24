@@ -1,10 +1,10 @@
-const {connect} = require("../connectors/mariadbConnect");
+const {connect, disconnect} = require("../connectors/mariadbConnect");
 
 async function executeQueries() {
-    const queries = [
+    const testCases = [
         {
             name: 'count all applicants',
-            sql: 'SELECT COUNT(*) FROM Applicant INNER JOIN ParticipantInfo',
+            sql: 'SELECT COUNT(*) FROM Applicant INNER JOIN ParticipantInfo ON Applicant.InfoId=ParticipantInfo.Id',
         },
         {
             name: 'get all columns',
@@ -24,22 +24,24 @@ async function executeQueries() {
         }
     ];
 
+    console.log('connecting ...');
     const conn = await connect();
-
-    for (let query of queries) {
+    console.log('running queries ...');
+    for (let testCase of testCases) {
 
         const start = new Date();
-        const rows = await conn.query(query);
-        console.log('query `%s` took %dms', query.name, new Date() - start);
-        // console.log(rows[0]);
+        const result = await conn.query(testCase.sql);
+        console.log('test `%s` took %dms', testCase.name, new Date() - start);
+        console.log(result[0]);
 
     }
 
     console.log('done, closing connection...');
     await conn.end();
     console.log('closed connection');
+    await disconnect();
 }
 
 module.exports = {
-    executeQueries,
+    executeMariaDbQueries: executeQueries,
 };
