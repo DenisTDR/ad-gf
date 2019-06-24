@@ -1,8 +1,9 @@
 const fs = require('fs');
+const path = require("path");
 
-const localConstantsPath = './constants.local.js';
-if (fs.existsSync(localConstantsPath)) {
-    module.exports = require(localConstantsPath);
+const localConfigPath =  './config.local.js';
+if (fs.existsSync(path.resolve(__dirname, localConfigPath))) {
+    module.exports = require(localConfigPath);
 } else {
     module.exports = {
         mongodbUrl: 'mongodb://localhost:27017/ad-gf',
@@ -13,7 +14,7 @@ if (fs.existsSync(localConstantsPath)) {
             user: 'root',
             password: '',
             connectionLimit: 5,
-            database: 'iswint_portal',
+            database: 'iswint_portal'
         },
     };
 }

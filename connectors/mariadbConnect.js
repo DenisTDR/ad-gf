@@ -1,6 +1,14 @@
 const mariadbConnect = require('mariadb');
-const {mariaDbConfig} = require("../constants");
+const {mariaDbConfig} = require("../config/config");
 
+mariadbConnect.typeCast = function castField(field, useDefaultTypeCasting) {
+    console.log(field.type);
+    if ((field.type === "BIT") && (field.length === 1)) {
+        var bytes = field.buffer();
+        return (bytes[0] === 1);
+    }
+    return (useDefaultTypeCasting());
+};
 
 const pool = mariadbConnect.createPool(mariaDbConfig);
 
@@ -15,6 +23,11 @@ async function connect() {
     }
 }
 
+async function disconnect() {
+    await pool.end();
+}
+
 module.exports = {
     connect,
+    disconnect
 };

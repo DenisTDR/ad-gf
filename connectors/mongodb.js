@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const {ParticipantInfo} = require("../models/participant-info.schema");
 const {Applicant} = require("../models/applicant.schema");
-const {mongodbUrl} = require("../constants");
+const {mongodbUrl} = require("../config/config");
 
 const options = {useNewUrlParser: true};
 

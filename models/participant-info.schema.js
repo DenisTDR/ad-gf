@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
 
-const participantInfo = new mongoose.Schema({
-    id: Number,
-    birthDate: Date,
-});
+const participantInfoSchema = new mongoose.Schema({
+    Id: {type: Number, index: true},
+    FoodPreference: {type: Number, index: true}
 
-const ParticipantInfo = mongoose.model('ParticipantInfo', participantInfo);
-module.exports = {ParticipantInfo};
+}, {strict: false});
+
+// const ParticipantInfo = mongoose.model('ParticipantInfo', participantInfoSchema);
+module.exports = {
+    // ParticipantInfo,
+    participantInfoSchema
+};
 

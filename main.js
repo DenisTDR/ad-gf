@@ -1,10 +1,10 @@
 const express = require('express');
 const mongodb = require("./connectors/mongodb");
-const mariaDb = require('./mariadb');
+const mariaDb = require('./queries/mariadb-queries');
 const app = express();
 
 // const {Applicant} = require("./models/applicant.schema");
-const {appPort} = require("./constants");
+const {appPort} = require("./config/config");
 
 // mongodb.connect(async () => {
     // console.log('created schema?');
